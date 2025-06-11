@@ -16,7 +16,7 @@ class CourtProApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.initialRoute,
+      initialRoute: AppRoutes.movieDetailsRoute,
       onGenerateRoute: AppRoutes.generateRoute,
       onGenerateTitle: (context) {
         loc = AppLocalizations.of(context)!;
