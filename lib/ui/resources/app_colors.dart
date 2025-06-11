@@ -13,4 +13,5 @@ class AppColors {
   static Color yellow = const Color(0xffCD9D0F);
   static Color textFieldColor = const Color(0xffEFEFEF);
   static Color textFieldHintColor = const Color(0x202C434D);
+  static Color overviewTextColor = const Color(0xff8f8f8f);
 }

@@ -8,5 +8,10 @@
   "dashboard_bn_more": "More",
 
   "dashboard_watch_title": "Watch",
-  "dashboard_watch_tf_hint": "TV shows, movies and more"
+  "dashboard_watch_tf_hint": "TV shows, movies and more",
+
+  "movie_details_txt_genres": "Genres",
+  "movie_details_txt_overview": "Overview",
+  "movie_details_btn_get_tickets": "Get Tickets",
+ "movie_details_btn_watch_trailer": "Watch Trailer"
 }
