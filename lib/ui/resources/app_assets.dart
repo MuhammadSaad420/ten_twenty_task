@@ -4,12 +4,13 @@ class AppAssets {
   // Images
   static const String imgLogo = "assets/images/app_logo.png";
 
-
   // Svg Icons
-  static const String icInsights = "assets/icons/ic_insights.svg";
+  static const String icDashboard = "assets/icons/ic_dashboard.svg";
+  static const String icWatch = "assets/icons/ic_watch.svg";
+  static const String icMediaLibrary = "assets/icons/ic_library.svg";
+  static const String icMore = "assets/icons/ic_more.svg";
 
-
-    // Lottie Animations
+  // Lottie Animations
   static const String waveAnimation = 'assets/lottie/wave_animation.json';
 
   // Json Assets
