@@ -5,5 +5,8 @@
   "dashboard_bn_dashboard": "Dashboard",
   "dashboard_bn_watch": "Watch",
   "dashboard_bn_media_library": "Media Library",
-  "dashboard_bn_more": "More"
+  "dashboard_bn_more": "More",
+
+  "dashboard_watch_title": "Watch",
+  "dashboard_watch_tf_hint": "TV shows, movies and more"
 }

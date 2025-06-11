@@ -6,7 +6,7 @@ import '../enums/toast_type.dart';
 extension ToastColor on ToastType {
   Color getColor() {
     return this == ToastType.message
-        ? AppColors.primaryColor
+        ? AppColors.darkPurple
         : this == ToastType.error
             ? Colors.red
             : Colors.green;

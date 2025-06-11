@@ -21,12 +21,13 @@ class DashboardScreen extends HookWidget {
           currentView.value = selectedView;
         },
       ),
-      body: switch (currentView.value) {
+      body: SafeArea(
+          child: switch (currentView.value) {
         DashboardType.dashboard => const DashboardView(),
         DashboardType.watch => const WatchView(),
         DashboardType.mediaLibrary => const MediaLibraryView(),
         DashboardType.more => const MoreView(),
-      },
+      }),
     );
   }
 }

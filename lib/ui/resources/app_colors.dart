@@ -11,4 +11,6 @@ class AppColors {
   static Color pink = const Color(0xffE26CA5);
   static Color purple = const Color(0xff564CA3);
   static Color yellow = const Color(0xffCD9D0F);
+  static Color textFieldColor = const Color(0xffEFEFEF);
+  static Color textFieldHintColor = const Color(0x202C434D);
 }

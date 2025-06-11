@@ -19,7 +19,7 @@ class OutlineButtonWidget extends StatelessWidget {
       onPressed: onTap,
       child: TextWidget(
         title: title,
-        color: AppColors.primaryColor,
+        color: AppColors.darkPurple,
       ),
     );
   }

@@ -20,6 +20,7 @@ dependencies:
   cached_network_image: 3.4.0
   flutter_hooks: 0.20.5
   svg_flutter: 0.0.1  
+  gap: 3.0.1
 
 dev_dependencies:
   flutter_test:
