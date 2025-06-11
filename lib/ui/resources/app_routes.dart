@@ -1,4 +1,4 @@
-import 'package:court_pro/ui/screens/login/login_screen.dart';
+import 'package:court_pro/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -11,11 +11,10 @@ class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case initialRoute:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
-      case loginRoute:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => const DashboardScreen());
+
       default:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => const DashboardScreen());
     }
   }
 }

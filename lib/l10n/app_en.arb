@@ -1,5 +1,9 @@
 {
   "appTitle": "Court App",
-
-  "msg_no_network_available": "No internet connection available"
+  "msg_no_network_available": "No internet connection available",
+  
+  "dashboard_bn_dashboard": "Dashboard",
+  "dashboard_bn_watch": "Watch",
+  "dashboard_bn_media_library": "Media Library",
+  "dashboard_bn_more": "More"
 }
