@@ -1,4 +1,5 @@
 import 'package:court_pro/core/di/locator.dart';
+import 'package:court_pro/providers/movie_filter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,6 +14,8 @@ Future<void> main() async {
   await setupLocator();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runApp(const CourtProApp());
 }
 
@@ -27,6 +30,11 @@ class CourtProApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => MovieProvider(
+            movieRepository: locator<IMovieRepository>(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MovieFilterProvider(
             movieRepository: locator<IMovieRepository>(),
           ),
         ),

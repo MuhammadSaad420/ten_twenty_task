@@ -1,5 +1,5 @@
 import 'package:court_pro/model/data/genre_model.dart';
-import 'package:court_pro/model/data/upcoming_movie_response.dart';
+import 'package:court_pro/model/data/movies_response.dart';
 import 'package:court_pro/model/data/video_model.dart';
 import 'package:court_pro/model/repositories/imovie_repository.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class MovieProvider extends ChangeNotifier {
   List<Genre> genres = [];
   List<VideoResult> trailers = [];
 
-  UpcomingMovieResponse? movieResponse;
+  MoviesResponse? movieResponse;
 
   Future<void> fetchUpcomingMovies() async {
     if (movieResponse != null &&

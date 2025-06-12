@@ -2,21 +2,20 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'genre_model.dart';
 
-part 'upcoming_movie_response.freezed.dart';
-part 'upcoming_movie_response.g.dart';
+part 'movies_response.freezed.dart';
+part 'movies_response.g.dart';
 
 @freezed
-class UpcomingMovieResponse with _$UpcomingMovieResponse {
-  const factory UpcomingMovieResponse({
-    required Dates dates,
+class MoviesResponse with _$MoviesResponse {
+  const factory MoviesResponse({
     required int page,
     required List<Movie> results,
     required int totalPages,
     required int totalResults,
-  }) = _UpcomingMovieResponse;
+  }) = _MoviesResponse;
 
-  factory UpcomingMovieResponse.fromJson(Map<String, dynamic> json) =>
-      _$UpcomingMovieResponseFromJson(json);
+  factory MoviesResponse.fromJson(Map<String, dynamic> json) =>
+      _$MoviesResponseFromJson(json);
 }
 
 @freezed
@@ -46,6 +45,7 @@ class Movie with _$Movie {
     required double voteAverage,
     required int voteCount,
     @Default([]) List<Genre>? genres,
+    @Default([]) List<int>? genreIds,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

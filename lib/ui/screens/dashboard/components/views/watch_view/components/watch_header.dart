@@ -1,12 +1,14 @@
+import 'package:court_pro/providers/movie_filter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../../core/enums/watch_mode.dart';
 import '../../../../../../../main.dart';
 import '../../../../../../common/icon_widget.dart';
 import '../../../../../../common/text_widget.dart';
-import '../../../../../../resources/app_colors.dart';
+import 'search_text_field.dart';
 
 class WatchHeader extends HookWidget {
   const WatchHeader({
@@ -21,10 +23,11 @@ class WatchHeader extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final filteredMovies = context.read<MovieFilterProvider>().filteredMovies;
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
-      child: currentMode == WatchMode.search
+      padding: const EdgeInsets.fromLTRB(20, 40, 20, 22),
+      child: currentMode == WatchMode.normal
           ? Row(
               children: [
                 TextWidget(
@@ -34,82 +37,48 @@ class WatchHeader extends HookWidget {
                 ),
                 const Spacer(),
                 InkWell(
-                    onTap: () => onModeToggled(WatchMode.searching),
+                    onTap: () => onModeToggled(WatchMode.search),
                     child: const IconWidget(icon: Icons.search)),
               ],
             )
-          : currentMode == WatchMode.searching
+          : currentMode == WatchMode.searching ||
+                  currentMode == WatchMode.search
               ? Row(
                   children: [
                     SearchTextField(
-                      onClose: () => onModeToggled(WatchMode.search),
+                      onClose: () => onModeToggled(WatchMode.normal),
                       onSubmit: (enteredText) =>
                           onModeToggled(WatchMode.searched),
+                      onTextEntered: (enteredText) {
+                        if (currentMode == WatchMode.search &&
+                            enteredText.isNotEmpty) {
+                          onModeToggled(WatchMode.searching);
+                        }
+                        if (enteredText.isNotEmpty) {
+                          context
+                              .read<MovieFilterProvider>()
+                              .searchByKeyword(keyword: enteredText, page: 1);
+                        }
+                      },
                     ),
                   ],
                 )
               : Row(
                   children: [
                     InkWell(
-                      onTap: () => onModeToggled(WatchMode.search),
+                      onTap: () => onModeToggled(WatchMode.normal),
                       child: const IconWidget(
                         icon: Icons.arrow_back_ios,
                       ),
                     ),
                     const Gap(15),
-                    const TextWidget(
-                      title: "3 Results Found",
+                    TextWidget(
+                      title: loc.dashboard_txt_result(filteredMovies.length),
                       size: 16,
                       weight: FontWeight.w500,
                     )
                   ],
                 ),
-    );
-  }
-}
-
-class SearchTextField extends HookWidget {
-  const SearchTextField({
-    super.key,
-    required this.onClose,
-    required this.onSubmit,
-  });
-
-  final VoidCallback onClose;
-  final ValueChanged<String> onSubmit;
-
-  @override
-  Widget build(BuildContext context) {
-    final searchController = useTextEditingController();
-    return Expanded(
-      child: TextField(
-        controller: searchController,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-        onSubmitted: onSubmit,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(100),
-            borderSide: const BorderSide(
-              width: 0,
-              style: BorderStyle.none,
-            ),
-          ),
-          hintText: loc.dashboard_watch_tf_hint,
-          hintStyle: TextStyle(
-            color: AppColors.textFieldHintColor,
-          ),
-          filled: true,
-          fillColor: AppColors.textFieldColor,
-          suffixIcon: InkWell(
-            onTap: () {
-              searchController.clear();
-              onClose();
-            },
-            child: const IconWidget(icon: Icons.close),
-          ),
-          prefixIcon: const IconWidget(icon: Icons.search),
-        ),
-      ),
     );
   }
 }
