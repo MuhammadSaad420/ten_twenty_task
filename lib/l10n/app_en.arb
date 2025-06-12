@@ -1,6 +1,9 @@
 {
   "appTitle": "Court App",
+  "retry": "Retry",
   "msg_no_network_available": "No internet connection available",
+  "msg_no_trailer_available": "Trailer is not available yet",
+  "msg_no_data_available": "No data available",
   
   "dashboard_bn_dashboard": "Dashboard",
   "dashboard_bn_watch": "Watch",
@@ -13,5 +16,11 @@
   "movie_details_txt_genres": "Genres",
   "movie_details_txt_overview": "Overview",
   "movie_details_btn_get_tickets": "Get Tickets",
- "movie_details_btn_watch_trailer": "Watch Trailer"
+  "movie_details_btn_watch_trailer": "Watch Trailer",
+  "movie_details_txt_in_theatre": "In Theatres {data} ",
+  "@movie_details_txt_in_theatre": {
+    "placeholders": {
+      "data": {}
+    }
+  }
 }

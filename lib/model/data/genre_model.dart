@@ -1,3 +1,4 @@
+import 'package:court_pro/core/enums/genre_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'genre_model.freezed.dart';
@@ -17,7 +18,7 @@ class GenreResponse with _$GenreResponse {
 class Genre with _$Genre {
   const factory Genre({
     required int id,
-    required String name,
+    @JsonKey(unknownEnumValue: GenreType.action) required GenreType name,
   }) = _Genre;
 
   factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);

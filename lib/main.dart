@@ -1,5 +1,6 @@
 import 'package:court_pro/core/di/locator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'model/repositories/imovie_repository.dart';
@@ -10,6 +11,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const CourtProApp());
 }
 
