@@ -40,6 +40,7 @@ class ImageWidget extends StatelessWidget {
                 imageSrc,
                 width: imgWidth,
                 height: imgHeight,
+                fit: BoxFit.cover,
               )
         : cache
             ? CachedImageWidget(
