@@ -46,6 +46,7 @@ class ImageWidget extends StatelessWidget {
                 imgUrl: imageSrc,
                 imageWidth: imgWidth,
                 imageHeight: imgHeight,
+                
               )
             : Image.network(
                 imageSrc,

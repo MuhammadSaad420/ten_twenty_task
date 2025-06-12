@@ -1,5 +1,8 @@
+import 'package:court_pro/main.dart';
+import 'package:court_pro/providers/movie_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/enums/dashboard_view.dart';
 import 'components/bottom_bar_widget.dart';
@@ -14,6 +17,10 @@ class DashboardScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final currentView = useState(DashboardType.dashboard);
+    useEffect(() {
+      context.read<MovieProvider>().fetchUpcomingMovies();
+      return null;
+    }, []);
     return Scaffold(
       bottomNavigationBar: BottomBarWidget(
         currentView: currentView.value,

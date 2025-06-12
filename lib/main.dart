@@ -1,9 +1,15 @@
+import 'package:court_pro/core/di/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+import 'model/repositories/imovie_repository.dart';
+import 'providers/movie_provider.dart';
 import 'ui/resources/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
   runApp(const CourtProApp());
 }
 
@@ -14,23 +20,32 @@ class CourtProApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.movieDetailsRoute,
-      onGenerateRoute: AppRoutes.generateRoute,
-      onGenerateTitle: (context) {
-        loc = AppLocalizations.of(context)!;
-        return loc.appTitle;
-      },
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => MovieProvider(
+            movieRepository: locator<IMovieRepository>(),
+          ),
+        ),
       ],
-      supportedLocales: const [
-        Locale('en', ''),
-      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppRoutes.initialRoute,
+        onGenerateRoute: AppRoutes.generateRoute,
+        onGenerateTitle: (context) {
+          loc = AppLocalizations.of(context)!;
+          return loc.appTitle;
+        },
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', ''),
+        ],
+      ),
     );
   }
 }

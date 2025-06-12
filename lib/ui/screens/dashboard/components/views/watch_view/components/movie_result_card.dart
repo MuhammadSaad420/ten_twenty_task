@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../../../model/data/upcoming_movie_response.dart';
 import '../../../../../../common/icon_widget.dart';
 import '../../../../../../common/text_widget.dart';
 import '../../../../../../resources/app_colors.dart';
@@ -8,7 +9,10 @@ import '../../../../../../resources/app_colors.dart';
 class MovieResultCard extends StatelessWidget {
   const MovieResultCard({
     super.key,
+    required this.movie,
   });
+
+  final Movie movie;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,8 @@ class MovieResultCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TextWidget(
-                  title: "Timeless",
+                TextWidget(
+                  title: movie.title,
                   size: 16,
                   weight: FontWeight.w500,
                 ),

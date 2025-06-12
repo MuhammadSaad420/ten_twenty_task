@@ -18,7 +18,7 @@ class CachedImageWidget extends StatelessWidget {
       imageUrl: imgUrl,
       height: imageHeight,
       width: imageWidth,
-      fit: BoxFit.fill,
+      fit: BoxFit.cover,
       // TODO: Place specific placeholder image here
       errorWidget: (_, __, ___) => Container(),
     );
