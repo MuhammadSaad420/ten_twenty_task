@@ -32,7 +32,7 @@ class CatergoryCard extends StatelessWidget {
             bottom: 20,
             left: 10,
             child: TextWidget(
-              title: genre.name,
+              title: genre.name.label,
               size: 16,
               weight: FontWeight.w500,
               color: Colors.white,

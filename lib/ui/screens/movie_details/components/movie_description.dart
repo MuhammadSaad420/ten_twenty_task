@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../main.dart';
+import '../../../../model/data/upcoming_movie_response.dart';
 import '../../../common/text_widget.dart';
 import '../../../resources/app_colors.dart';
 import 'genre_chip.dart';
@@ -9,7 +10,10 @@ import 'genre_chip.dart';
 class MovieDecription extends StatelessWidget {
   const MovieDecription({
     super.key,
+    required this.movie,
   });
+
+  final Movie movie;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +28,14 @@ class MovieDecription extends StatelessWidget {
             weight: FontWeight.w500,
           ),
           const Gap(5),
-          const Wrap(
-            children: [
-              GenreChip(),
-              GenreChip(),
-              GenreChip(),
-            ],
+          Wrap(
+            spacing: 5,
+            children: movie.genres!
+                .map((genre) => GenreChip(
+                      title: genre.name.label,
+                      bgColor: genre.name.color,
+                    ))
+                .toList(),
           ),
           const Gap(5),
           const Divider(
@@ -43,8 +49,7 @@ class MovieDecription extends StatelessWidget {
           ),
           const Gap(14),
           TextWidget(
-            title:
-                "As a collection of history's worst tyrants and criminal masterminds gather to plot a war to wipe out millions, one man must race against time to stop them. Discover the origins of the very first independent intelligence agency in The King's Man. The Comic Book “The Secret Service” by Mark Millar and Dave Gibbons.",
+            title: movie.overview,
             size: 12,
             color: AppColors.overviewTextColor,
           )

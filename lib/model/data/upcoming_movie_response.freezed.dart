@@ -420,7 +420,6 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 mixin _$Movie {
   bool get adult => throw _privateConstructorUsedError;
   String? get backdropPath => throw _privateConstructorUsedError;
-  List<int> get genreIds => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get originalLanguage => throw _privateConstructorUsedError;
   String get originalTitle => throw _privateConstructorUsedError;
@@ -432,6 +431,7 @@ mixin _$Movie {
   bool get video => throw _privateConstructorUsedError;
   double get voteAverage => throw _privateConstructorUsedError;
   int get voteCount => throw _privateConstructorUsedError;
+  List<Genre>? get genres => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -446,7 +446,6 @@ abstract class $MovieCopyWith<$Res> {
   $Res call(
       {bool adult,
       String? backdropPath,
-      List<int> genreIds,
       int id,
       String originalLanguage,
       String originalTitle,
@@ -457,7 +456,8 @@ abstract class $MovieCopyWith<$Res> {
       String title,
       bool video,
       double voteAverage,
-      int voteCount});
+      int voteCount,
+      List<Genre>? genres});
 }
 
 /// @nodoc
@@ -475,7 +475,6 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
   $Res call({
     Object? adult = null,
     Object? backdropPath = freezed,
-    Object? genreIds = null,
     Object? id = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
@@ -487,6 +486,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
+    Object? genres = freezed,
   }) {
     return _then(_value.copyWith(
       adult: null == adult
@@ -497,10 +497,6 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      genreIds: null == genreIds
-          ? _value.genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -545,6 +541,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      genres: freezed == genres
+          ? _value.genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>?,
     ) as $Val);
   }
 }
@@ -559,7 +559,6 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
   $Res call(
       {bool adult,
       String? backdropPath,
-      List<int> genreIds,
       int id,
       String originalLanguage,
       String originalTitle,
@@ -570,7 +569,8 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       String title,
       bool video,
       double voteAverage,
-      int voteCount});
+      int voteCount,
+      List<Genre>? genres});
 }
 
 /// @nodoc
@@ -586,7 +586,6 @@ class __$$MovieImplCopyWithImpl<$Res>
   $Res call({
     Object? adult = null,
     Object? backdropPath = freezed,
-    Object? genreIds = null,
     Object? id = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
@@ -598,6 +597,7 @@ class __$$MovieImplCopyWithImpl<$Res>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
+    Object? genres = freezed,
   }) {
     return _then(_$MovieImpl(
       adult: null == adult
@@ -608,10 +608,6 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      genreIds: null == genreIds
-          ? _value._genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -656,6 +652,10 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      genres: freezed == genres
+          ? _value._genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<Genre>?,
     ));
   }
 }
@@ -666,7 +666,6 @@ class _$MovieImpl implements _Movie {
   const _$MovieImpl(
       {required this.adult,
       this.backdropPath,
-      required final List<int> genreIds,
       required this.id,
       required this.originalLanguage,
       required this.originalTitle,
@@ -677,8 +676,9 @@ class _$MovieImpl implements _Movie {
       required this.title,
       required this.video,
       required this.voteAverage,
-      required this.voteCount})
-      : _genreIds = genreIds;
+      required this.voteCount,
+      final List<Genre>? genres = const []})
+      : _genres = genres;
 
   factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
       _$$MovieImplFromJson(json);
@@ -687,14 +687,6 @@ class _$MovieImpl implements _Movie {
   final bool adult;
   @override
   final String? backdropPath;
-  final List<int> _genreIds;
-  @override
-  List<int> get genreIds {
-    if (_genreIds is EqualUnmodifiableListView) return _genreIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genreIds);
-  }
-
   @override
   final int id;
   @override
@@ -717,10 +709,20 @@ class _$MovieImpl implements _Movie {
   final double voteAverage;
   @override
   final int voteCount;
+  final List<Genre>? _genres;
+  @override
+  @JsonKey()
+  List<Genre>? get genres {
+    final value = _genres;
+    if (value == null) return null;
+    if (_genres is EqualUnmodifiableListView) return _genres;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Movie(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'Movie(adult: $adult, backdropPath: $backdropPath, id: $id, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, genres: $genres)';
   }
 
   @override
@@ -731,7 +733,6 @@ class _$MovieImpl implements _Movie {
             (identical(other.adult, adult) || other.adult == adult) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
-            const DeepCollectionEquality().equals(other._genreIds, _genreIds) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.originalLanguage, originalLanguage) ||
                 other.originalLanguage == originalLanguage) &&
@@ -750,7 +751,8 @@ class _$MovieImpl implements _Movie {
             (identical(other.voteAverage, voteAverage) ||
                 other.voteAverage == voteAverage) &&
             (identical(other.voteCount, voteCount) ||
-                other.voteCount == voteCount));
+                other.voteCount == voteCount) &&
+            const DeepCollectionEquality().equals(other._genres, _genres));
   }
 
   @JsonKey(ignore: true)
@@ -759,7 +761,6 @@ class _$MovieImpl implements _Movie {
       runtimeType,
       adult,
       backdropPath,
-      const DeepCollectionEquality().hash(_genreIds),
       id,
       originalLanguage,
       originalTitle,
@@ -770,7 +771,8 @@ class _$MovieImpl implements _Movie {
       title,
       video,
       voteAverage,
-      voteCount);
+      voteCount,
+      const DeepCollectionEquality().hash(_genres));
 
   @JsonKey(ignore: true)
   @override
@@ -790,7 +792,6 @@ abstract class _Movie implements Movie {
   const factory _Movie(
       {required final bool adult,
       final String? backdropPath,
-      required final List<int> genreIds,
       required final int id,
       required final String originalLanguage,
       required final String originalTitle,
@@ -801,7 +802,8 @@ abstract class _Movie implements Movie {
       required final String title,
       required final bool video,
       required final double voteAverage,
-      required final int voteCount}) = _$MovieImpl;
+      required final int voteCount,
+      final List<Genre>? genres}) = _$MovieImpl;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$MovieImpl.fromJson;
 
@@ -809,8 +811,6 @@ abstract class _Movie implements Movie {
   bool get adult;
   @override
   String? get backdropPath;
-  @override
-  List<int> get genreIds;
   @override
   int get id;
   @override
@@ -833,6 +833,8 @@ abstract class _Movie implements Movie {
   double get voteAverage;
   @override
   int get voteCount;
+  @override
+  List<Genre>? get genres;
   @override
   @JsonKey(ignore: true)
   _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>

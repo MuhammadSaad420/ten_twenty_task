@@ -15,28 +15,31 @@ class OutlineButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: btnWidth,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.lightBlue, width: 1.5),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const IconWidget(
-            icon: Icons.play_arrow,
-            color: Colors.white,
-          ),
-          const Gap(10),
-          TextWidget(
-            title: title,
-            size: 14,
-            weight: FontWeight.w600,
-            color: Colors.white,
-          )
-        ],
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 50,
+        width: btnWidth,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: AppColors.lightBlue, width: 1.5),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const IconWidget(
+              icon: Icons.play_arrow,
+              color: Colors.white,
+            ),
+            const Gap(10),
+            TextWidget(
+              title: title,
+              size: 14,
+              weight: FontWeight.w600,
+              color: Colors.white,
+            )
+          ],
+        ),
       ),
     );
   }

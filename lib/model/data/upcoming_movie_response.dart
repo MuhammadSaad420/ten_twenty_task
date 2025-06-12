@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'genre_model.dart';
+
 part 'upcoming_movie_response.freezed.dart';
 part 'upcoming_movie_response.g.dart';
 
@@ -32,7 +34,6 @@ class Movie with _$Movie {
   const factory Movie({
     required bool adult,
     String? backdropPath,
-    required List<int> genreIds,
     required int id,
     required String originalLanguage,
     required String originalTitle,
@@ -44,6 +45,7 @@ class Movie with _$Movie {
     required bool video,
     required double voteAverage,
     required int voteCount,
+    @Default([]) List<Genre>? genres,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

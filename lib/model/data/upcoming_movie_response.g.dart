@@ -42,9 +42,6 @@ Map<String, dynamic> _$$DatesImplToJson(_$DatesImpl instance) =>
 _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       adult: json['adult'] as bool,
       backdropPath: json['backdrop_path'] as String?,
-      genreIds: (json['genre_ids'] as List<dynamic>)
-          .map((e) => (e as num).toInt())
-          .toList(),
       id: (json['id'] as num).toInt(),
       originalLanguage: json['original_language'] as String,
       originalTitle: json['original_title'] as String,
@@ -56,13 +53,16 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       video: json['video'] as bool,
       voteAverage: (json['vote_average'] as num).toDouble(),
       voteCount: (json['vote_count'] as num).toInt(),
+      genres: (json['genres'] as List<dynamic>?)
+              ?.map((e) => Genre.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
     <String, dynamic>{
       'adult': instance.adult,
       'backdrop_path': instance.backdropPath,
-      'genre_ids': instance.genreIds,
       'id': instance.id,
       'original_language': instance.originalLanguage,
       'original_title': instance.originalTitle,
@@ -74,4 +74,5 @@ Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
       'video': instance.video,
       'vote_average': instance.voteAverage,
       'vote_count': instance.voteCount,
+      'genres': instance.genres?.map((e) => e.toJson()).toList(),
     };
