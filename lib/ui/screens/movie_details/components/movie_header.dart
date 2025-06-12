@@ -3,7 +3,7 @@ import 'package:court_pro/core/enums/site_type.dart';
 import 'package:court_pro/core/enums/video_type.dart';
 import 'package:court_pro/core/utils/image_utils.dart';
 import 'package:court_pro/core/utils/toast_utils.dart';
-import 'package:court_pro/model/data/upcoming_movie_response.dart';
+import 'package:court_pro/model/data/movies_response.dart';
 import 'package:court_pro/ui/common/image_widget.dart';
 import 'package:court_pro/ui/resources/app_routes.dart';
 import 'package:flutter/material.dart';

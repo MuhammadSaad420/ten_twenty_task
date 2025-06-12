@@ -12,6 +12,12 @@
 
   "dashboard_watch_title": "Watch",
   "dashboard_watch_tf_hint": "TV shows, movies and more",
+  "dashboard_txt_result": "{total} Result Found ",
+  "@dashboard_txt_result": {
+    "placeholders": {
+      "total": {}
+    }
+  },
 
   "movie_details_txt_genres": "Genres",
   "movie_details_txt_overview": "Overview",

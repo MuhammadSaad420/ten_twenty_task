@@ -1,6 +1,6 @@
 import 'package:court_pro/core/enums/image_type.dart';
 import 'package:court_pro/core/utils/image_utils.dart';
-import 'package:court_pro/model/data/upcoming_movie_response.dart';
+import 'package:court_pro/model/data/movies_response.dart';
 import 'package:court_pro/ui/common/image_widget.dart';
 import 'package:court_pro/ui/common/text_widget.dart';
 import 'package:court_pro/ui/resources/app_routes.dart';

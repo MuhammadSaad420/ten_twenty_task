@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../main.dart';
-import '../../../../model/data/upcoming_movie_response.dart';
+import '../../../../model/data/movies_response.dart';
 import '../../../common/text_widget.dart';
 import '../../../resources/app_colors.dart';
 import 'genre_chip.dart';

@@ -1,4 +1,4 @@
-import 'package:court_pro/model/data/upcoming_movie_response.dart';
+import 'package:court_pro/model/data/movies_response.dart';
 import 'package:court_pro/model/data/video_model.dart';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -12,15 +12,18 @@ class Apis {
   static const String upcomingMovies = 'movie/upcoming';
   static const String genre = 'genre/movie/list';
   static const String movie = 'movie';
+  static const String search = 'search/movie';
 }
 
 @RestApi(baseUrl: AppConstants.baseUrl)
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
-  @GET("${Apis.upcomingMovies}?language=en-US&page={pageNumber}")
-  Future<UpcomingMovieResponse> fetchUpcomingMovies(
-      {@Path("pageNumber") required int page});
+  @GET(Apis.upcomingMovies)
+  Future<MoviesResponse> fetchUpcomingMovies({
+    @Query("page") required int page,
+    @Query("language") String language = "en-US",
+  });
 
   @GET("${Apis.genre}?language=en-US")
   Future<GenreResponse> fetchGenres();
@@ -30,4 +33,11 @@ abstract class ApiService {
 
   @GET("${Apis.movie}/{movieId}/videos")
   Future<VideoResponse> fetchVideos({@Path("movieId") required int movieId});
+
+  @GET(Apis.search)
+  Future<MoviesResponse> searchByText({
+    @Query("query") required String keyword,
+    @Query("page") required int page,
+    @Query("language") String language = "en-US",
+  });
 }

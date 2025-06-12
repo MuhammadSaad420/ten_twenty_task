@@ -24,19 +24,25 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<UpcomingMovieResponse> fetchUpcomingMovies({required int page}) async {
+  Future<MoviesResponse> fetchUpcomingMovies({
+    required int page,
+    String language = "en-US",
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'language': language,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<UpcomingMovieResponse>(Options(
+    final _options = _setStreamType<MoviesResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'movie/upcoming?language=en-US&page=${page}',
+          'movie/upcoming',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -46,9 +52,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UpcomingMovieResponse _value;
+    late MoviesResponse _value;
     try {
-      _value = UpcomingMovieResponse.fromJson(_result.data!);
+      _value = MoviesResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -148,6 +154,47 @@ class _ApiService implements ApiService {
     late VideoResponse _value;
     try {
       _value = VideoResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<MoviesResponse> searchByText({
+    required String keyword,
+    required int page,
+    String language = "en-US",
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'query': keyword,
+      r'page': page,
+      r'language': language,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<MoviesResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'search/movie',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MoviesResponse _value;
+    try {
+      _value = MoviesResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
