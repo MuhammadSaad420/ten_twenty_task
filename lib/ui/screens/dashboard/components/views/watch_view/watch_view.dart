@@ -1,5 +1,4 @@
 import 'package:court_pro/providers/movie_provider.dart';
-import 'package:court_pro/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
@@ -33,24 +32,36 @@ class WatchView extends HookWidget {
               ),
             ),
           ),
-        if (currentMode.value == WatchMode.searching)
-          Expanded(
-            child: GridView.builder(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 1.2,
-                ),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return const CatergoryCard();
-                }),
-          ),
+        if (currentMode.value == WatchMode.searching) const GenreListing(),
         if (currentMode.value == WatchMode.search) const UpcomingListing()
       ],
+    );
+  }
+}
+
+class GenreListing extends StatelessWidget {
+  const GenreListing({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final movieProvider = context.watch<MovieProvider>();
+    return Expanded(
+      child: GridView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 1.2,
+          ),
+          itemCount: movieProvider.genres.length,
+          itemBuilder: (context, index) {
+            return CatergoryCard(
+              genre: movieProvider.genres[index],
+            );
+          }),
     );
   }
 }

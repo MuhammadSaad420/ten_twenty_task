@@ -1,3 +1,4 @@
+import 'package:court_pro/model/data/genre_model.dart';
 import 'package:court_pro/model/repositories/imovie_repository.dart';
 
 import '../data/upcoming_movie_response.dart';
@@ -7,6 +8,11 @@ class MovieRepository extends IMovieRepository {
 
   @override
   Future<UpcomingMovieResponse> getUpcomingMovies({required int page}) async {
-    return await apiService.fetchUpcomingMovies(page: page);
+    return apiService.fetchUpcomingMovies(page: page);
+  }
+
+  @override
+  Future<GenreResponse> fetchGenres() {
+    return apiService.fetchGenres();
   }
 }

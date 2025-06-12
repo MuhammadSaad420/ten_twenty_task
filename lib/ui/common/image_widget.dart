@@ -40,13 +40,13 @@ class ImageWidget extends StatelessWidget {
                 imageSrc,
                 width: imgWidth,
                 height: imgHeight,
+                fit: BoxFit.cover,
               )
         : cache
             ? CachedImageWidget(
                 imgUrl: imageSrc,
                 imageWidth: imgWidth,
                 imageHeight: imgHeight,
-                
               )
             : Image.network(
                 imageSrc,

@@ -2,7 +2,7 @@ class AppAssets {
   AppAssets._();
 
   // Images
-  static const String imgLogo = "assets/images/app_logo.png";
+  static const String imgGenre = "assets/images/img_genre.png";
 
   // Svg Icons
   static const String icDashboard = "assets/icons/ic_dashboard.svg";
@@ -11,8 +11,6 @@ class AppAssets {
   static const String icMore = "assets/icons/ic_more.svg";
 
   // Lottie Animations
-  static const String waveAnimation = 'assets/lottie/wave_animation.json';
 
   // Json Assets
-  static const String usageTypeJson = 'assets/json/usage_type.json';
 }

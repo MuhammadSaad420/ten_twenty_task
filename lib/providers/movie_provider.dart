@@ -1,3 +1,4 @@
+import 'package:court_pro/model/data/genre_model.dart';
 import 'package:court_pro/model/data/upcoming_movie_response.dart';
 import 'package:court_pro/model/repositories/imovie_repository.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class MovieProvider extends ChangeNotifier {
       : _movieRepository = movieRepository;
 
   List<Movie> movies = [];
+  List<Genre> genres = [];
 
   UpcomingMovieResponse? movieResponse;
 
@@ -18,6 +20,12 @@ class MovieProvider extends ChangeNotifier {
     movieResponse = await _movieRepository.getUpcomingMovies(
         page: movieResponse != null ? movieResponse!.page + 1 : 1);
     movies = [...movies, ...movieResponse?.results ?? []];
+    notifyListeners();
+  }
+
+  Future<void> fetchGenres() async {
+    final genreResponse = await _movieRepository.fetchGenres();
+    genres = genreResponse.genres;
     notifyListeners();
   }
 }

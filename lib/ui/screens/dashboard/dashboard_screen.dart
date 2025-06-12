@@ -1,4 +1,3 @@
-import 'package:court_pro/main.dart';
 import 'package:court_pro/providers/movie_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,6 +18,7 @@ class DashboardScreen extends HookWidget {
     final currentView = useState(DashboardType.dashboard);
     useEffect(() {
       context.read<MovieProvider>().fetchUpcomingMovies();
+      context.read<MovieProvider>().fetchGenres();
       return null;
     }, []);
     return Scaffold(
