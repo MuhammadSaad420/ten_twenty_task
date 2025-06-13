@@ -1,6 +1,8 @@
 import 'package:court_pro/ui/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+
 enum SeatStatus {
   selected,
   unavailable,
@@ -28,15 +30,30 @@ extension SeatStatusExtension on SeatStatus {
   String get label {
     switch (this) {
       case SeatStatus.selected:
-        return "Selected";
+        return loc.selected;
       case SeatStatus.unavailable:
-        return "Unavailable";
+        return loc.not_available;
       case SeatStatus.vip:
-        return "VIP";
+        return loc.vip;
       case SeatStatus.regular:
-        return "Regular";
+        return loc.regular;
       case SeatStatus.empty:
         return "";
+    }
+  }
+
+  double? get price {
+    switch (this) {
+      case SeatStatus.selected:
+        return null;
+      case SeatStatus.unavailable:
+        return null;
+      case SeatStatus.vip:
+        return 150;
+      case SeatStatus.regular:
+        return 50;
+      case SeatStatus.empty:
+        return null;
     }
   }
 }

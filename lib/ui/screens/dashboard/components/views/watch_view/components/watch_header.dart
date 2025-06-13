@@ -24,61 +24,64 @@ class WatchHeader extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final filteredMovies = context.read<MovieFilterProvider>().filteredMovies;
-    return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.fromLTRB(20, 40, 20, 22),
-      child: currentMode == WatchMode.normal
-          ? Row(
-              children: [
-                TextWidget(
-                  title: loc.dashboard_watch_title,
-                  size: 18,
-                  weight: FontWeight.w500,
-                ),
-                const Spacer(),
-                InkWell(
-                    onTap: () => onModeToggled(WatchMode.search),
-                    child: const IconWidget(icon: Icons.search)),
-              ],
-            )
-          : currentMode == WatchMode.searching ||
-                  currentMode == WatchMode.search
-              ? Row(
-                  children: [
-                    SearchTextField(
-                      onClose: () => onModeToggled(WatchMode.normal),
-                      onSubmit: (enteredText) =>
-                          onModeToggled(WatchMode.searched),
-                      onTextEntered: (enteredText) {
-                        if (currentMode == WatchMode.search &&
-                            enteredText.isNotEmpty) {
-                          onModeToggled(WatchMode.searching);
-                        }
-                        if (enteredText.isNotEmpty) {
-                          context
-                              .read<MovieFilterProvider>()
-                              .searchByKeyword(keyword: enteredText, page: 1);
-                        }
-                      },
-                    ),
-                  ],
-                )
-              : Row(
-                  children: [
-                    InkWell(
-                      onTap: () => onModeToggled(WatchMode.normal),
-                      child: const IconWidget(
-                        icon: Icons.arrow_back_ios,
+    return Material(
+      elevation: 0.2,
+      child: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.fromLTRB(20, 40, 20, 22),
+        child: currentMode == WatchMode.normal
+            ? Row(
+                children: [
+                  TextWidget(
+                    title: loc.dashboard_watch_title,
+                    size: 18,
+                    weight: FontWeight.w500,
+                  ),
+                  const Spacer(),
+                  InkWell(
+                      onTap: () => onModeToggled(WatchMode.search),
+                      child: const IconWidget(icon: Icons.search)),
+                ],
+              )
+            : currentMode == WatchMode.searching ||
+                    currentMode == WatchMode.search
+                ? Row(
+                    children: [
+                      SearchTextField(
+                        onClose: () => onModeToggled(WatchMode.normal),
+                        onSubmit: (enteredText) =>
+                            onModeToggled(WatchMode.searched),
+                        onTextEntered: (enteredText) {
+                          if (currentMode == WatchMode.search &&
+                              enteredText.isNotEmpty) {
+                            onModeToggled(WatchMode.searching);
+                          }
+                          if (enteredText.isNotEmpty) {
+                            context
+                                .read<MovieFilterProvider>()
+                                .searchByKeyword(keyword: enteredText, page: 1);
+                          }
+                        },
                       ),
-                    ),
-                    const Gap(15),
-                    TextWidget(
-                      title: loc.dashboard_txt_result(filteredMovies.length),
-                      size: 16,
-                      weight: FontWeight.w500,
-                    )
-                  ],
-                ),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      InkWell(
+                        onTap: () => onModeToggled(WatchMode.normal),
+                        child: const IconWidget(
+                          icon: Icons.arrow_back_ios,
+                        ),
+                      ),
+                      const Gap(15),
+                      TextWidget(
+                        title: loc.dashboard_txt_result(filteredMovies.length),
+                        size: 16,
+                        weight: FontWeight.w500,
+                      )
+                    ],
+                  ),
+      ),
     );
   }
 }

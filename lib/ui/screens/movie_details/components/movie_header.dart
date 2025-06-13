@@ -44,7 +44,7 @@ class MovieHeader extends StatelessWidget {
             children: [
               TextWidget(
                 title: loc.movie_details_txt_in_theatre(
-                    DateUtil.formatDate(movie.releaseDate)),
+                    DateUtil.formatStringDate(movie.releaseDate)),
                 color: Colors.white,
                 size: 18,
                 weight: FontWeight.w500,
@@ -55,7 +55,10 @@ class MovieHeader extends StatelessWidget {
                 buttonColor: AppColors.lightBlue,
                 textColor: Colors.white,
                 btnWidth: screenWidth * 0.7,
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).pushNamed(
+                  AppRoutes.hallSelectionRoute,
+                  arguments: movie,
+                ),
               ),
               const Gap(10),
               OutlineButtonWidget(

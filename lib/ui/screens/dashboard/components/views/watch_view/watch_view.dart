@@ -21,7 +21,9 @@ class WatchView extends HookWidget {
         ),
         if (currentMode.value == WatchMode.searched ||
             currentMode.value == WatchMode.searching)
-          const FilteredListing(),
+          FilteredListing(
+            isSearching: currentMode.value == WatchMode.searching,
+          ),
         if (currentMode.value == WatchMode.search) const GenreListing(),
         if (currentMode.value == WatchMode.normal) const UpcomingListing()
       ],

@@ -1,7 +1,13 @@
 import 'package:court_pro/core/enums/seat_status.dart';
+import 'package:court_pro/model/data/cinema_hall.dart';
 
 class AppConstants {
   static const String baseUrl = 'https://api.themoviedb.org/3/';
+
+  static List<CinemaHall> cinemaHalls = [
+    CinemaHall(number: 1, pricing: 50, bonus: 2500, time: '12:30'),
+    CinemaHall(number: 2, pricing: 75, bonus: 3000, time: '13:30'),
+  ];
 
   static const List<List<SeatStatus>> seats = [
     [

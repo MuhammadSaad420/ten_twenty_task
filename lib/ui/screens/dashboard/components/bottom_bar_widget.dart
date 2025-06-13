@@ -69,29 +69,28 @@ class BottomBarWidget extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () => onTabSelected(view),
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  icon,
-                  color: isSelected ? Colors.white : AppColors.darkGrey,
-                  width: 16,
-                  height: 16,
-                ),
-                const SizedBox(height: 4),
-                TextWidget(
-                  title: label,
-                  size: 10,
-                  color: isSelected ? Colors.white : AppColors.darkGrey,
-                ),
-              ],
+      child: SizedBox(
+        height: 75,
+        width: 75,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              icon,
+              colorFilter: ColorFilter.mode(
+                  isSelected ? Colors.white : AppColors.darkGrey,
+                  BlendMode.srcIn),
+              width: 16,
+              height: 16,
             ),
-          ),
-        ],
+            const SizedBox(height: 4),
+            TextWidget(
+              title: label,
+              size: 10,
+              color: isSelected ? Colors.white : AppColors.darkGrey,
+            ),
+          ],
+        ),
       ),
     );
   }

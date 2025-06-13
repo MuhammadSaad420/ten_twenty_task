@@ -1,6 +1,14 @@
 {
   "appTitle": "Court App",
   "retry": "Retry",
+  "from": "From",
+  "or": "or",
+  "selected": "Selected",
+  "not_available": "Not available",
+  "vip": "VIP",
+  "regular": "Regular",
+  "screen": "Screen",
+  "done": "Done",
   "msg_no_network_available": "No internet connection available",
   "msg_no_trailer_available": "Trailer is not available yet",
   "msg_no_data_available": "No data available",
@@ -27,6 +35,27 @@
   "@movie_details_txt_in_theatre": {
     "placeholders": {
       "data": {}
+    }
+  },
+
+  "hall_selection_btn_select_seats": "Select Seats",
+  "hall_selection_txt_cinetech_hall": "Cinetech + Hall {number}",
+  "@hall_selection_txt_cinetech_hall": {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "hall_selection_txt_bonus": "{bonus} bonus",
+  "@hall_selection_txt_bonus": {
+    "placeholders": {
+      "bonus": {}
+    }
+  },
+
+  "seating_txt_hall": "Hall {hall}",
+  "@seating_txt_hall": {
+    "placeholders": {
+      "hall": {}
     }
   }
 }
