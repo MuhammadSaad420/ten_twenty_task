@@ -9,6 +9,8 @@ class AppAssets {
   static const String icWatch = "assets/icons/ic_watch.svg";
   static const String icMediaLibrary = "assets/icons/ic_library.svg";
   static const String icMore = "assets/icons/ic_more.svg";
+  static const String icScreenCurve = "assets/icons/ic_screen_curve.svg";
+  static const String icSeating = "assets/icons/ic_seating.svg";
 
   // Lottie Animations
 

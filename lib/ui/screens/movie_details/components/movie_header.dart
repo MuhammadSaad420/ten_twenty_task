@@ -44,7 +44,7 @@ class MovieHeader extends StatelessWidget {
             children: [
               TextWidget(
                 title: loc.movie_details_txt_in_theatre(
-                    DateUtil.formatDate(movie.releaseDate)),
+                    DateUtil.formatStringDate(movie.releaseDate)),
                 color: Colors.white,
                 size: 18,
                 weight: FontWeight.w500,
@@ -55,7 +55,10 @@ class MovieHeader extends StatelessWidget {
                 buttonColor: AppColors.lightBlue,
                 textColor: Colors.white,
                 btnWidth: screenWidth * 0.7,
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).pushNamed(
+                  AppRoutes.hallSelectionRoute,
+                  arguments: movie,
+                ),
               ),
               const Gap(10),
               OutlineButtonWidget(
@@ -71,7 +74,7 @@ class MovieHeader extends StatelessWidget {
                       )
                       .toList();
                   if (youtubeTrailers.isNotEmpty) {
-                    Navigator.pushNamed(context, AppRoutes.trailer,
+                    Navigator.pushNamed(context, AppRoutes.trailerRoute,
                         arguments: youtubeTrailers.first.key);
                   } else {
                     ToastUtils.show(
@@ -90,59 +93,59 @@ class MovieHeader extends StatelessWidget {
 
   Stack _poster(double screenHeight) {
     return Stack(
-        children: [
-          SizedBox(
-            height: screenHeight * 0.6,
-            child: Stack(
-              children: [
-                ImageWidget(
-                  imageSrc: ImageUtils.getPosterUrl(movie.posterPath),
-                  type: ImageType.network,
-                  cache: true,
-                  imgWidth: double.infinity,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    gradient: const LinearGradient(
-                      colors: [
-                        Colors.black,
-                        Colors.black54,
-                        Colors.black12,
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.center,
-                    ),
+      children: [
+        SizedBox(
+          height: screenHeight * 0.6,
+          child: Stack(
+            children: [
+              ImageWidget(
+                imageSrc: ImageUtils.getPosterUrl(movie.posterPath),
+                type: ImageType.network,
+                cache: true,
+                imgWidth: double.infinity,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: const LinearGradient(
+                    colors: [
+                      Colors.black,
+                      Colors.black54,
+                      Colors.black12,
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.center,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 
   Positioned _back(BuildContext context) {
     return Positioned(
-        top: 59,
-        left: 13,
-        child: InkWell(
-          onTap: () => Navigator.pop(context),
-          child: Row(
-            children: [
-              const IconWidget(
-                icon: Icons.arrow_back_ios,
-                color: Colors.white,
-              ),
-              TextWidget(
-                title: loc.dashboard_bn_watch,
-                color: Colors.white,
-                size: 16,
-                weight: FontWeight.w500,
-              )
-            ],
-          ),
+      top: 59,
+      left: 13,
+      child: InkWell(
+        onTap: () => Navigator.pop(context),
+        child: Row(
+          children: [
+            const IconWidget(
+              icon: Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+            TextWidget(
+              title: loc.dashboard_bn_watch,
+              color: Colors.white,
+              size: 16,
+              weight: FontWeight.w500,
+            )
+          ],
         ),
-      );
+      ),
+    );
   }
 }

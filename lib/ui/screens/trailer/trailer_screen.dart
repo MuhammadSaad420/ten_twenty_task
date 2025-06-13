@@ -1,7 +1,10 @@
+import 'package:court_pro/ui/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../../../main.dart';
 
 class TrailerScreen extends HookWidget {
   TrailerScreen({super.key, required this.videoId});
@@ -32,12 +35,23 @@ class TrailerScreen extends HookWidget {
     }, []);
     return Scaffold(
       body: OrientationBuilder(builder: (context, orientation) {
-        return YoutubePlayer(
-          aspectRatio: orientation == Orientation.landscape ? 16 / 9 : 9 / 16,
-          controller: _controller,
-          onEnded: (_) {
-            Navigator.of(context).pop();
-          },
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            YoutubePlayer(
+              aspectRatio:
+                  orientation == Orientation.landscape ? 16 / 9 : 9 / 16,
+              controller: _controller,
+              onEnded: (_) => Navigator.of(context).pop(),
+            ),
+            Positioned(
+              bottom: 15,
+              child: MainButton(
+                title: loc.done,
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ),
+          ],
         );
       }),
     );
