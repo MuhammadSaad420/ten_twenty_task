@@ -1,5 +1,6 @@
 import 'package:court_pro/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:court_pro/ui/screens/movie_details/movie_details_screen.dart';
+import 'package:court_pro/ui/screens/seating/seating_screen.dart';
 import 'package:court_pro/ui/screens/trailer/trailer_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,8 @@ class AppRoutes {
   //Route Names
   static const initialRoute = '/';
   static const movieDetailsRoute = '/movie_details';
-  static const trailer = '/trailer';
+  static const trailerRoute = '/trailer';
+  static const seatingRoute = '/seating';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -26,7 +28,7 @@ class AppRoutes {
             );
           },
         );
-      case trailer:
+      case trailerRoute:
         return MaterialPageRoute(
           builder: (_) {
             final videoId = settings.arguments as String;
@@ -35,8 +37,12 @@ class AppRoutes {
             );
           },
         );
+      case seatingRoute:
+        return MaterialPageRoute(
+          builder: (_) => const SeatingScreen(),
+        );
       default:
-        return MaterialPageRoute(builder: (_) => const DashboardScreen());
+        return MaterialPageRoute(builder: (_) => const SizedBox.shrink());
     }
   }
 }
